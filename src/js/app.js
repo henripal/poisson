@@ -1,12 +1,30 @@
 /* sweetScroll load */
+width = window.innerWidth;
+if (width>768){
+    num_nb = Math.round(Math.sqrt(width * 15));
+}else{
+    num_nb = Math.round(Math.sqrt(width * 3));
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  const sweetScroll = new SweetScroll({/* some options */});
+  // const sweetScroll = new SweetScroll({/* some options */});
+
+    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+  function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+  }
+
 
   /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
   particlesJS('particles-js', {
     "particles": {
       "number": {
-        "value": 300,
+        "value": num_nb,
         "density": {
           "enable": true,
           "value_area": 800
@@ -60,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "move": {
         "enable": true,
         "speed": 3,
-        "direction": "bottom-right",
+        "direction": "bottom",
         "random": true,
         "straight": false,
         "out_mode": "out",

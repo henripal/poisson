@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Roboto-Mono:100');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 body {
     margin: 0;
@@ -7,7 +8,7 @@ body {
     font-size: 100%;
     line-height: 1.5;
     color: #555;
-    font-family: 'Roboto-Mono', monospace;
+    font-family: 'Inconsolata', sans-serif;
 }
 article, aside, figcaption, figure, footer, header, nav, section {
     display: block;
@@ -24,6 +25,7 @@ h1 {
 }
 h2 {
     font-size: 2rem;
+    font-weight: 100;
 }
 h3 {
     font-size: 1.5rem;
