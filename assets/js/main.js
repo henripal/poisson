@@ -174,12 +174,20 @@ class TextScramble {
           char = this.randomChar();
           this.queue[i].char = char;
         }
-        output += `<span class="dud">${char}</span>`;
+        // output += `<span class="dud">${char}</span>`;
+        output += char;
       } else {
         output += from;
       }
     }
-    this.el.innerHTML = output;
+    if (output.indexOf(' ') >=0) {
+      this.el.innerHTML = output;
+    } else {
+      var i = Math.floor(output.length/2)
+      var left = output.slice(0, i)
+      var right = output.slice(i, output.length)
+      this.el.innerHTML = left + '\n' + right
+    }
     if (complete === this.queue.length) {
       this.resolve();
     } else {
@@ -205,11 +213,16 @@ const el = document.querySelector(".site-description");
 const fx = new TextScramble(el);
 
 let counter = 0;
-const next = () => {
-  fx.setText(phrases[counter]).then(() => {
-    setTimeout(next, 800);
-  });
-  counter = (counter + 1) % phrases.length;
-};
+if (width > 768) {
 
-next();
+  const next = () => {
+    fx.setText(phrases[counter]).then(() => {
+      setTimeout(next, 800);
+    });
+    counter = (counter + 1) % phrases.length;
+  };
+
+  next();
+} else {
+  el.innerHTML = "AI and\nMachine Learning"
+}
